@@ -1,0 +1,31 @@
+{% extends 'queries/querytemplate.html' %}
+
+{% block title %}<h3>Получить данные о составе указанного отдела или всей организации полностью, по
+    указанной категории сотрудников, по возрастному составу:</h3>{% endblock %}
+
+{% block content %}
+    <form class="form" action="{% url 'query1' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" style="margin-bottom: 1%">Поиск</button>
+    </form>
+
+    <table class="table-bordered" style="text-align: center">
+    {% if data %}
+    <td style="padding: 0 6px 0 6px">Department</td>
+    <td style="padding: 0 6px 0 6px">Worker Name</td>
+    <td style="padding: 0 6px 0 6px">Worker Age</td>
+    <td style="padding: 0 6px 0 6px">Worker Address</td>
+    {% endif %}
+
+    {% for i in data %}
+        <tr>
+            <td style="padding: 0 6px 0 6px">{{ i.department_name }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.worker_name }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.worker_age }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.worker_address }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

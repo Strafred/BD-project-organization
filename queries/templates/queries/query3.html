@@ -1,0 +1,53 @@
+{% extends 'queries/querytemplate.html' %}
+
+{% block title %}<h3>Получить перечень договоров или проектов, выполняемых в данный момент или в период
+указанного интервала времени:</h3>{% endblock %}
+
+{% block content %}
+    <form class="form" action="{% url 'query3' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" style="margin-bottom: 1%">Поиск</button>
+    </form>
+
+    <table class="table-bordered" style="text-align: center">
+    {% if contracts_data %}
+    <td style="padding: 0 6px 0 6px">Contract Info</td>
+    <td style="padding: 0 6px 0 6px">Group Name</td>
+    <td style="padding: 0 6px 0 6px">Beginning Of Work</td>
+    <td style="padding: 0 6px 0 6px">End Of Work</td>
+    {% endif %}
+
+    {% for i in contracts_data %}
+        <tr>
+            <td style="padding: 0 6px 0 6px">{{ i.contract_info }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.group_name }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.beginning_of_work }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.end_of_work }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <table class="table-bordered" style="text-align: center; margin: 5em 0 0 0 ">
+    {% if projects_data %}
+    <td style="padding: 0 6px 0 6px">Project Info</td>
+    <td style="padding: 0 6px 0 6px">Group Name</td>
+    <td style="padding: 0 6px 0 6px">Beginning Of Work</td>
+    <td style="padding: 0 6px 0 6px">End Of Work</td>
+    <td style="padding: 0 6px 0 6px">Work Price</td>
+    <td style="padding: 0 6px 0 6px">Subcontractor Info</td>
+    {% endif %}
+
+    {% for i in projects_data %}
+        <tr>
+            <td style="padding: 0 6px 0 6px">{{ i.project_info }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.group_name }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.beginning_of_work }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.end_of_work }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.work_price }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.subcontractor_info }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

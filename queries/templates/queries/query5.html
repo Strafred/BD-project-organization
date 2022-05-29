@@ -1,0 +1,49 @@
+{% extends 'queries/querytemplate.html' %}
+
+{% block title %}<h3>Получить данные о стоимости выполненных договоров (проектов) в течение указанного
+периода времени:</h3>{% endblock %}
+
+{% block content %}
+    <form class="form" action="{% url 'query5' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" style="margin-bottom: 1%">Поиск</button>
+    </form>
+
+    <table class="table-bordered" style="text-align: center">
+    {% if contracts_data %}
+    <td style="padding: 0 6px 0 6px">Contract Info</td>
+    <td style="padding: 0 6px 0 6px">Contract Sign Time</td>
+    <td style="padding: 0 6px 0 6px">Contract End Time</td>
+    <td style="padding: 0 6px 0 6px">Contract Price</td>
+    {% endif %}
+
+    {% for i in contracts_data %}
+        <tr>
+            <td style="padding: 0 6px 0 6px">{{ i.contract_info }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.contract_sign_time }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.contract_end_time }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.contract_price }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <table class="table-bordered" style="text-align: center; margin: 5em 0 0 0 ">
+    {% if projects_data %}
+    <td style="padding: 0 6px 0 6px">Project Info</td>
+    <td style="padding: 0 6px 0 6px">Project Sign Time</td>
+    <td style="padding: 0 6px 0 6px">Project End Time</td>
+    <td style="padding: 0 6px 0 6px">Project Price</td>
+    {% endif %}
+
+    {% for i in projects_data %}
+        <tr>
+            <td style="padding: 0 6px 0 6px">{{ i.project_info }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.project_sign_time }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.project_end_time }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.project_price }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

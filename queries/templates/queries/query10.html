@@ -1,0 +1,73 @@
+{% extends 'queries/querytemplate.html' %}
+
+{% block title %}<h3>Получить данные о численности и составе сотрудников в целом и по отдельным
+категориям, участвующих в указанном проекте:</h3>{% endblock %}
+
+{% block content %}
+    <form class="form" action="{% url 'query10' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" style="margin-bottom: 1%">Поиск</button>
+    </form>
+
+    <table class="table-bordered" style="text-align: center; margin: 0 0 5em 0;">
+    {% if data_with_categories %}
+    {{ data_with_categories|length }} WORKERS TOTAL:
+
+    <td style="padding: 0 6px 0 6px">Worker Name</td>
+    <td style="padding: 0 6px 0 6px">Category Name</td>
+    <td style="padding: 0 6px 0 6px">Group Name</td>
+    <td style="padding: 0 6px 0 6px">Appointment Date</td>
+    <td style="padding: 0 6px 0 6px">Dismissal Date</td>
+    <td style="padding: 0 6px 0 6px">Project Info</td>
+    <td style="padding: 0 6px 0 6px">Work Price</td>
+    <td style="padding: 0 6px 0 6px">Beginning Of Work</td>
+    <td style="padding: 0 6px 0 6px">End Of Work</td>
+    {% endif %}
+
+    {% for i in data_with_categories %}
+        <tr>
+            <td style="padding: 0 6px 0 6px">{{ i.worker_name }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.category_name }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.group_name }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.appointment_date }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.dismissal_date }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.project_info }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.work_price }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.beginning_of_work }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.end_of_work }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <table class="table-bordered" style="text-align: center;">
+    {% if data_all_workers %}
+    {{ data_all_workers|length }} WORKERS TOTAL:
+
+    <td style="padding: 0 6px 0 6px">Worker Name</td>
+    <td style="padding: 0 6px 0 6px">Category Name</td>
+    <td style="padding: 0 6px 0 6px">Group Name</td>
+    <td style="padding: 0 6px 0 6px">Appointment Date</td>
+    <td style="padding: 0 6px 0 6px">Dismissal Date</td>
+    <td style="padding: 0 6px 0 6px">Project Info</td>
+    <td style="padding: 0 6px 0 6px">Work Price</td>
+    <td style="padding: 0 6px 0 6px">Beginning Of Work</td>
+    <td style="padding: 0 6px 0 6px">End Of Work</td>
+    {% endif %}
+
+    {% for i in data_all_workers %}
+        <tr>
+            <td style="padding: 0 6px 0 6px">{{ i.worker_name }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.category_name }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.group_name }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.appointment_date }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.dismissal_date }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.project_info }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.work_price }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.beginning_of_work }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.end_of_work }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

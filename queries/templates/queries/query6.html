@@ -1,0 +1,31 @@
+{% extends 'queries/querytemplate.html' %}
+
+{% block title %}<h3>Получить данные о распределении оборудования на данный момент или на некоторую
+указанную дату:</h3>{% endblock %}
+
+{% block content %}
+    <form class="form" action="{% url 'query6' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" style="margin-bottom: 1%">Поиск</button>
+    </form>
+
+    <table class="table-bordered" style="text-align: center">
+    {% if data %}
+    <td style="padding: 0 6px 0 6px">Equipment Name</td>
+    <td style="padding: 0 6px 0 6px">Signed Start Date</td>
+    <td style="padding: 0 6px 0 6px">Signed End Date</td>
+    <td style="padding: 0 6px 0 6px">Group Name</td>
+    {% endif %}
+
+    {% for i in data %}
+        <tr>
+            <td style="padding: 0 6px 0 6px">{{ i.equipment_name }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.signed_start_date }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.signed_end_date }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.group_name }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'queries/querytemplate.html' %}
+
+{% block title %}<h3>Получить сведения об эффективности договоров (стоимость договоров соотнесенная с
+затраченным временем или стоимость с учетом привлеченных людских ресурсов):</h3>{% endblock %}
+
+{% block content %}
+    <table class="table-bordered" style="text-align: center">
+    {% if data %}
+    <td style="padding: 0 6px 0 6px">Contract Info</td>
+    <td style="padding: 0 6px 0 6px">Contract Price</td>
+    <td style="padding: 0 6px 0 6px">Group Days Consumed</td>
+    <td style="padding: 0 6px 0 6px">Efficiency</td>
+    {% endif %}
+
+    {% for i in data %}
+        <tr>
+            <td style="padding: 0 6px 0 6px">{{ i.contract_info }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.contract_price }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.group_days_consumed }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.efficiency }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

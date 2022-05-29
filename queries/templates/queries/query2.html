@@ -1,0 +1,24 @@
+{% extends 'queries/querytemplate.html' %}
+
+{% block title %}<h3>Получить перечень руководителей отделов:</h3>{% endblock %}
+
+{% block content %}
+    <table class="table-bordered" style="text-align: center">
+    {% if data %}
+    <td style="padding: 0 6px 0 6px">Chief Name</td>
+    <td style="padding: 0 6px 0 6px">Chief Age</td>
+    <td style="padding: 0 6px 0 6px">Chief Address</td>
+    <td style="padding: 0 6px 0 6px">Department Name</td>
+    {% endif %}
+
+    {% for i in data %}
+        <tr>
+            <td style="padding: 0 6px 0 6px">{{ i.chief_name }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.chief_age }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.chief_address }}</td>
+            <td style="padding: 0 6px 0 6px">{{ i.department_name }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

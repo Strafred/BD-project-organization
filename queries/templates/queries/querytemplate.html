@@ -1,0 +1,49 @@
+<!doctype html>
+
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>A Basic HTML5 Template</title>
+  <meta name="description" content="A simple HTML5 Template for new projects.">
+  <meta name="author" content="SitePoint">
+
+  <meta property="og:title" content="A Basic HTML5 Template">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
+  <meta property="og:description" content="A simple HTML5 Template for new projects.">
+  <meta property="og:image" content="image.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+<aside style="float: left; background: rgba(209,223,236,0.59); width: 20%; padding: 3%; height: 300vh; color: #050101; border-right: 1em solid #2a2828; margin-right: 1%">
+    <h3>Проектная Организация:</h3>
+    <ul>
+        <a href="/admin" style="text-decoration: none"><li>БД</li></a>
+        <a href="/queries/query1" style="text-decoration: none; margin-top: 1px"><li>Составы Отделов</li></a>
+        <a href="/queries/query2" style="text-decoration: none; margin-top: 1px"><li>Перечень Руководителей</li></a>
+        <a href="/queries/query3" style="text-decoration: none; margin-top: 1px"><li>Перечень Договоров</li></a>
+        <a href="/queries/query4" style="text-decoration: none; margin-top: 1px"><li>Договоры - Проекты</li></a>
+        <a href="/queries/query5" style="text-decoration: none; margin-top: 1px"><li>Стоимость Договоров</li></a>
+        <a href="/queries/query6" style="text-decoration: none; margin-top: 1px"><li>Оборудование, Распр.</li></a>
+        <a href="/queries/query7" style="text-decoration: none; margin-top: 1px"><li>Оборудование, Исп.</li></a>
+        <a href="/queries/query8" style="text-decoration: none; margin-top: 1px"><li>Участие Сотрудников</li></a>
+        <a href="/queries/query9" style="text-decoration: none; margin-top: 1px"><li>Субподрядчики</li></a>
+        <a href="/queries/query10" style="text-decoration: none; margin-top: 1px"><li>Участие в Проекте</li></a>
+        <a href="/queries/query11" style="text-decoration: none; margin-top: 1px"><li>Оборудование, Эффект.</li></a>
+        <a href="/queries/query12" style="text-decoration: none; margin-top: 1px"><li>Договоры, Эффект.</li></a>
+        <a href="/queries/query13" style="text-decoration: none; margin-top: 1px"><li>Участие в Проектах</li></a>
+        <a href="/queries/query14" style="text-decoration: none; margin-top: 1px"><li>Проекты, Эффект.</li></a>
+    </ul>
+</aside>
+
+<main>
+    <H1>{% block title %}{% endblock %}</H1>
+        {% block content %}
+        {% endblock %}
+</main>
+
+</body>
+</html>
