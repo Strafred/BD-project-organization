@@ -1,4 +1,3 @@
-# BD-project-organization
 ## databases course project
 ### Информационная система проектной организации
 
